@@ -4,10 +4,8 @@ import com.yunteng.pojo.Dept;
 import com.yunteng.pojo.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import com.yunteng.service.DeptService;
 
@@ -44,4 +42,18 @@ public class DeptController {
         deptService.delete(id);
         return Result.success();
     }
+
+    /**
+     * 添加部门
+     * @param dept
+     * @return
+     */
+    @PostMapping("/depts")
+    public Result add(@RequestBody Dept dept){
+        log.info("添加部门:{}",dept);
+        //调用service添加部门
+        deptService.add(dept);
+        return Result.success();
+    }
+
 }
