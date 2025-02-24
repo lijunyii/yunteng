@@ -16,9 +16,7 @@ public class DeptServiceImpl implements DeptService {
     private DeptMapper deptMapper;
 
     @Override
-    public List<Dept> list() {
-        return deptMapper.list();
-    }
+    public List<Dept> list() {return deptMapper.list();}
 
     @Override
     public void delete(Integer id) {
