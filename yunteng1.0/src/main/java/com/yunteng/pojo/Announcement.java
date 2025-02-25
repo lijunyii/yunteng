@@ -16,4 +16,5 @@ public class Announcement {
     private String title;
     private String content;
     private LocalDateTime createTime;
+    private LocalDateTime updateTime;
 }

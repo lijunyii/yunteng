@@ -5,9 +5,7 @@ import com.yunteng.pojo.Result;
 import com.yunteng.service.AnnouncementService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,7 +13,7 @@ import java.util.List;
  * 公告栏控制器
  */
 @RestController
-@RequestMapping("/announcement")
+@RequestMapping("/announcements")
 @Slf4j
 public class AnnouncementController {
 
@@ -32,4 +30,30 @@ public class AnnouncementController {
         List<Announcement> announcements = announcementService.list();
         return Result.success(announcements);
     }
+
+    /**
+     * 删除公告
+     * @param id
+     * @return
+     */
+    @DeleteMapping("/{id}")
+    public Result delete(@PathVariable Integer id) {
+        log.info("删除公告：{}", id);
+        announcementService.delete(id);
+        return Result.success();
+    }
+
+    /**
+     * 添加公告
+     * @param announcement
+     * @return
+     */
+    @PostMapping()
+    public Result add(@RequestBody Announcement announcement) {
+        log.info("添加公告：{}", announcement);
+        announcementService.add(announcement);
+        return Result.success();
+    }
+
+
 }
