@@ -31,7 +31,8 @@ public class EmpController {
     @PostMapping
     public Result save(@RequestBody Emp emp) {
         log.info("新增学生，emp:{}", emp);
-        empService.save(emp);
+        List<Emp> empList = empService.list();
+      //  empService.save(emp);
         return Result.success();
     }
 
@@ -44,7 +45,7 @@ public class EmpController {
         log.info("查询全部学生数据");
         try {
             // 调用service查询数据库
-            List<Dept> deptList = empService.list();
+            List<Emp> empList= empService.list();
             return Result.success(empList);
         } catch (Exception e) {
             log.error("查询学生数据时发生异常: ", e);
