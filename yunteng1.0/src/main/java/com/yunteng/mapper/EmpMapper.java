@@ -1,12 +1,9 @@
 package com.yunteng.mapper;
 
-import com.yunteng.pojo.Dept;
 import com.yunteng.pojo.Emp;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -19,10 +16,9 @@ public interface EmpMapper {
 
     /**
      * 查询全部部门
-     *
      */
-    @Select("select * from `tlias`.emp")
-    List<Dept> list();
+    @Select("select * from emp")
+    List<Emp> list();
 
     /**
      * 新增学生
