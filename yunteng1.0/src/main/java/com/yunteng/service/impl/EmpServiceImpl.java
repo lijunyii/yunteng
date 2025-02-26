@@ -22,9 +22,12 @@ public class EmpServiceImpl implements EmpService {
     }
 
     @Override
-    public void save(Emp emp){
+    public void save(Emp emp) {
         emp.setCreateTime(LocalDateTime.now());
         emp.setUpdateTime(LocalDateTime.now());
         empMapper.insert(emp);
     }
+
+
+
 }

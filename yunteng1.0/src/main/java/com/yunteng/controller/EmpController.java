@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@RequestMapping("/emps")
+@RequestMapping
 public class EmpController {
     @Autowired
     private final EmpService empService;
@@ -28,7 +28,7 @@ public class EmpController {
      * 新增学生
      *
      */
-    @PostMapping
+    @PostMapping("/emps")
     public Result save(@RequestBody Emp emp) {
         log.info("新增学生，emp:{}", emp);
         List<Emp> empList = empService.list();
@@ -40,7 +40,7 @@ public class EmpController {
      * 查询全部学生数据
      *
      */
-    @GetMapping
+    @GetMapping("/emps")
     public Result list() {
         log.info("查询全部学生数据");
         try {
@@ -52,6 +52,10 @@ public class EmpController {
             return Result.error("查询学生数据失败，请稍后重试");
         }
     }
+
+
+
+
 
 
 
