@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.itheima</groupId>
-    <artifactId>tlias-web-management</artifactId>
+    <artifactId>yunteng-management</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>tlias-web-management</name>
     <description>Demo project for Spring Boot</description>
@@ -72,5 +72,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

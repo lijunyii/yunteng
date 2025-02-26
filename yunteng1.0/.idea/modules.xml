@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/tlias-web-management.iml" filepath="$PROJECT_DIR$/tlias-web-management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yunteng-management.iml" filepath="$PROJECT_DIR$/yunteng-management.iml" />
     </modules>
   </component>
 </project>

@@ -24,4 +24,10 @@ public class Result {
     public static Result error(String msg){
         return new Result(0,msg,null);
     }
+
+    // 处理异常响应
+    public static Result error(Exception e) {
+        String errorMessage = e.getMessage() != null ? e.getMessage() : "未知异常";
+        return new Result(0, errorMessage, null);
+    }
 }
