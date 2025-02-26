@@ -20,10 +20,10 @@ import java.util.List;
 public interface EmpMapper {
 
     /**
-     * 查询全部部门
+     * 查询全部学生
      */
     @Select("select * from `tlias`.emp")
-    List<Dept> list();
+    List<Emp> list();
 
     /**
      * 新增学生
@@ -33,4 +33,9 @@ public interface EmpMapper {
     void insert(Emp emp);
 
 
+    /**
+     * 批量删除
+     * @param ids
+     */
+    void delete(List<Integer> ids);
 }
