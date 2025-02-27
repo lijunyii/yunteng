@@ -20,6 +20,11 @@ import java.util.List;
 public interface EmpMapper {
 
     /**
+     *查找
+     */
+    Emp findByUsername(@Param("username") String username);
+
+    /**
      * 查询全部学生
      */
     @Select("select * from `tlias`.emp")
