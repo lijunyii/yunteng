@@ -22,12 +22,13 @@ public interface EmpMapper {
     /**
      *查找
      */
+     @Select("select * from emp where username = #{username}")
     Emp findByUsername(@Param("username") String username);
 
     /**
      * 查询全部学生
      */
-    @Select("select * from `tlias`.emp")
+    @Select("select * from emp")
     List<Emp> list();
 
     /**
