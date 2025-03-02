@@ -24,7 +24,7 @@ public interface EmpMapper {
      * 新增学生
      *
      */
-    @Insert("insert into emp(username,name,gender,award,job,entrydate,create_time,dept_id,create_time,update_time)" +
-            "values(#{username},#{name},#{gender},#{award},#{job},#{entrydate},#{createTime},#{deptId},#{createTime},#{updateTime})")
+    @Insert("insert into emp(username,name,gender,award,job,entry_date,create_time,dept_id,update_time)" +
+            "values(#{username},#{name},#{gender},#{award},#{job},#{entryDate},#{createTime},#{deptId},#{updateTime})")
     void insert(Emp emp);
 }
