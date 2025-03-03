@@ -1,6 +1,7 @@
 package com.yunteng.mapper;
 
 import com.yunteng.pojo.Emp;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -27,4 +28,16 @@ public interface EmpMapper {
     @Insert("insert into emp(username,name,gender,award,job,entry_date,create_time,dept_id,update_time)" +
             "values(#{username},#{name},#{gender},#{award},#{job},#{entryDate},#{createTime},#{deptId},#{updateTime})")
     void insert(Emp emp);
+
+    /**
+     * 删除学生
+     *
+     * @param id
+     */
+
+    @Delete("DELETE FROM tlias.emp WHERE id = #{id}")
+    void delete(Integer id);
+
+
+
 }

@@ -37,6 +37,12 @@
             <scope>runtime</scope>
         </dependency>
 
+        <delete id="deleteEmp">
+            DELETE FROM emp WHERE id = #{id}
+        </delete>
+
+
+
         <!--lombok-->
         <dependency>
             <groupId>org.projectlombok</groupId>
