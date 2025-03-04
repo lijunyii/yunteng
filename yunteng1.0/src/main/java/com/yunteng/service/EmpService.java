@@ -16,4 +16,13 @@ public interface EmpService {
 
 
     void deleteEmp(Integer id);
+
+    /**
+     * 根据id查询员工
+     * @param id
+     * @return
+     */
+    Emp getById(Integer id);
+
+
 }

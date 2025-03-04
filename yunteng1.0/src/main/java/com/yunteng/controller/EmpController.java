@@ -51,13 +51,29 @@ public class EmpController {
         }
     }
 
-    // 根据ID删除员工
+    /**
+     * 根据id删除学生
+     * @param id
+     * @return
+     */
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") Integer id) {
         log.info("根据学生id删除学生: {}", id);
         empService.deleteEmp(id);
         return ResponseEntity.ok().build();
     }
+
+
+    @GetMapping("/{id}")
+    public Result getById(@PathVariable("id") Integer id) {
+        log.info("根据id查询学生信息，id：{}",id);
+       Emp emp = empService.getById(id);
+        return Result.success(emp);
+
+
+    }
+
+
 }
 
 

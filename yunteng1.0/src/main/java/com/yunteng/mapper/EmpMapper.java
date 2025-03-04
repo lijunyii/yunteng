@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * 员工管理
@@ -38,6 +39,17 @@ public interface EmpMapper {
     @Delete("DELETE FROM tlias.emp WHERE id = #{id}")
     void delete(Integer id);
 
+    /**
+     * 根据ID查询员工
+     * @param id
+     * @return
+     */
+    @Select("select * from emp where id = #{id}")
+    Emp getById(Integer id);
+
+    /**
+     * 修改学生信息
+     */
 
 
 }

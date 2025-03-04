@@ -32,4 +32,9 @@ public class EmpServiceImpl implements EmpService {
     public void deleteEmp(Integer id) {
         empMapper.delete(id);
     }
+
+    @Override
+    public Emp getById(Integer id) {
+        return empMapper.getById(id);
+    }
 }
