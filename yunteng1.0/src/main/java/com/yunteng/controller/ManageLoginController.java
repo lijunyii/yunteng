@@ -19,23 +19,23 @@ public class ManageLoginController {
     @PostMapping("/manage/login")
     public Result login(@RequestBody Manage manage) {
         // 参数校验
+        try{
+            if(manage==null){
+                log.error("用户不存在");
+                return Result.error("用户不存在，请注册");
+            }
             if(manage.getUsername()==null||manage.getPassword()==null){
                 log.error("用户名或密码为空，登录失败");
                 return Result.error("用户名或密码不能为空，请填写用户名和密码");
             }
-        try{
+
             Manage m=manageService.login(manage.getUsername(),manage.getPassword());
-            if(m==null){
-                log.error("不存在该用户名");
-                return Result.error("不存在该用户名");
-            }
-            if(m.getPassword().equals(manage.getPassword()) && m.getUsername().equals(manage.getUsername())){
+            if(m==null){log.error("用户名或密码不正确，请重新输入");
+                return Result.error("用户名或密码不正确，请重新输入");
+            }else{
                 String jwt=JwtUtils.generateToken(manage.getUsername(),manage.getPassword());
                 log.info("用户{}登录成功，生成令牌{}",manage.getUsername(),jwt);
                 return Result.success(jwt);
-            }else{
-                log.error("用户名或密码不正确，请重新输入");
-                return Result.error("用户名或密码不正确，请重新输入");
             }
 
         } catch (Exception e) {
