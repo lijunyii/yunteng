@@ -16,6 +16,4 @@ public class Dept {
     private String name; //部门名称
     private LocalDateTime createTime; //创建时间
     private LocalDateTime updateTime; //修改时间
-
-
 }
