@@ -28,4 +28,7 @@ public interface ManageService {
      * @param manage
      */
 void add(Manage manage);
+
+    Manage login(String username, String password);
+
 }
