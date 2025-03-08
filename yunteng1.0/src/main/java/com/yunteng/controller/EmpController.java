@@ -28,12 +28,20 @@ public class EmpController {
     /**
      * 新增学生
      */
-    @PostMapping
-    public Result save(@RequestBody Emp emp) {
-        log.info("新增学生，emp:{}", emp);
+@PostMapping
+public Result save(@RequestBody Emp emp) {
+    try {
+        // 修正注释，改为新增员工
+        log.info("新增员工，emp:{}", emp);
         empService.save(emp);
-        return Result.success();
+        // 可以考虑在返回结果中包含更多信息，如新增员工的 ID
+        return Result.success("员工新增成功");
+    } catch (Exception e) {
+        log.error("新增员工失败，原因: {}", e.getMessage(), e);
+        return Result.error("员工新增失败，请稍后重试");
     }
+}
+
 
     /**
      * 查询全部学生数据
@@ -64,15 +72,21 @@ public class EmpController {
     }
 
 
-    @GetMapping("/{id}")
-    public Result getById(@PathVariable("id") Integer id) {
-        log.info("根据id查询学生信息，id：{}",id);
-       Emp emp = empService.getById(id);
+  @GetMapping("/{id}")
+public Result getById(@PathVariable("id") Integer id) {
+    try {
+        // 修正注释，改为根据id查询员工信息
+        log.info("根据id查询员工信息，id：{}", id);
+        Emp emp = empService.getById(id);
+        if (emp == null) {
+            return Result.error("未找到该员工信息");
+        }
         return Result.success(emp);
-
-
+    } catch (Exception e) {
+        log.error("根据id查询员工信息失败，原因: {}", e.getMessage(), e);
+        return Result.error("查询员工信息失败，请稍后重试");
     }
-
+}
 
 }
 

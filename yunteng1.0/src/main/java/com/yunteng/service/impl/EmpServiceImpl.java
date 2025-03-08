@@ -6,8 +6,10 @@ import com.yunteng.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class EmpServiceImpl implements EmpService {
@@ -22,9 +24,23 @@ public class EmpServiceImpl implements EmpService {
 
     }
 
+     @Override
+    public Emp login(String username, String password) {
+        Emp emp =empMapper.findByUsername(username);
+        if(Objects.nonNull(emp) && emp.getPassword().equals(password)){
+            return emp;
+        }
+        return null;
+    }
+
     @Override
     public List<Emp> list() {
         return empMapper.list();
+    }
+
+    @Override
+    public void deleteEmployeeById(Integer id) throws SQLException {
+    empMapper.deleteEmployeeById(id);
     }
 
 
