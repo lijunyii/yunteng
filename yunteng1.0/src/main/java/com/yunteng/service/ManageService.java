@@ -38,5 +38,7 @@ public interface ManageService {
      * @param password 密码
      * @return 登录成功返回对应的Manage对象，失败返回null
      */
+
     Manage login(String username, String password);
+
 }

@@ -16,31 +16,31 @@ public class ManageLoginController {
     @Autowired
     private ManageService manageService;
 
-    // 修改映射路径为 /manage/login
     @PostMapping("/manage/login")
     public Result login(@RequestBody Manage manage) {
         // 参数校验
-        if (manage == null || manage.getUsername() == null || manage.getPassword() == null) {
-            log.error("用户名或密码为空，登录失败");
-            return Result.error("用户名或密码为空");
-        }
-
-        try {
-            Manage e = manageService.login(manage.getUsername(), manage.getPassword());
-            if (e != null) {
-                String token = JwtUtils.generateToken(manage.getUsername(), manage.getPassword());
-                log.info("用户{} 登录成功，生成令牌: {}", manage.getUsername(), token);
-                return Result.success(token);
-            } else {
-                log.info("用户名或密码错误，登录失败");
-                return Result.error("用户名或密码错误");
+            if(manage.getUsername()==null||manage.getPassword()==null){
+                log.error("用户名或密码为空，登录失败");
+                return Result.error("用户名或密码不能为空，请填写用户名和密码");
             }
-        } catch (Exception ex) {
-            log.error("登录过程中发生异常: {}", ex.getMessage(), ex);
-            return Result.error("登录失败，请联系其他管理员");
+        try{
+            Manage m=manageService.login(manage.getUsername(),manage.getPassword());
+            if(m==null){
+                log.error("不存在该用户名");
+                return Result.error("不存在该用户名");
+            }
+            if(m.getPassword().equals(manage.getPassword()) && m.getUsername().equals(manage.getUsername())){
+                String jwt=JwtUtils.generateToken(manage.getUsername(),manage.getPassword());
+                log.info("用户{}登录成功，生成令牌{}",manage.getUsername(),jwt);
+                return Result.success(jwt);
+            }else{
+                log.error("用户名或密码不正确，请重新输入");
+                return Result.error("用户名或密码不正确，请重新输入");
+            }
+
+        } catch (Exception e) {
+            log.error("系统出现异常");
+            return Result.error("系统出现异常，请联系后台管理员");
         }
     }
 }
-
-
-
