@@ -11,21 +11,72 @@ import java.util.List;
 
 @Service
 public class ManageServicelmpl implements ManageService {
-     @Autowired
+    @Autowired
     private ManageMapper manageMapper;
 
     @Override
-    public List<Manage> list() {return manageMapper.list();}
+    public List<Manage> list() {
+        return manageMapper.list();
+    }
 
     @Override
     public void delete(Integer id) {
-        manageMapper.deleteById(id);
+        try {
+            manageMapper.deleteById(id);
+        } catch (Exception e) {
+            // Handle exceptions
+            e.printStackTrace();
+        }
+    }
+
+    private void setCreateAndUpdateTime(Manage manage) {
+        manage.setCreateTime(LocalDateTime.now());
+        manage.setUpdateTime(LocalDateTime.now());
     }
 
     @Override
     public void add(Manage manage) {
-        manage.setCreateTime(LocalDateTime.now());
-        manage.setUpdateTime(LocalDateTime.now());
-        manageMapper.insert(manage);
+        setCreateAndUpdateTime(manage);
+        try {
+            manageMapper.insert(manage);
+        } catch (Exception e) {
+            // Handle exceptions
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void save(Manage manage) {
+        add(manage);
+    }
+
+    @Override
+    public Manage getById(Integer id) {
+        try {
+            return manageMapper.getById(id);
+        } catch (Exception e) {
+            // Handle exceptions
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public Manage login(Manage manage) {
+        try {
+            return manageMapper.getByUsernameAndPassword(manage);
+        } catch (Exception e) {
+            // Handle exceptions
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public Manage login(String username, String password) {
+        Manage manage = new Manage();
+        manage.setUsername(username);
+        manage.setPassword(password);
+        return login(manage);
     }
 }

@@ -8,7 +8,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="yunteng-management" />
-        <module name="tlias-web-management" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11" />

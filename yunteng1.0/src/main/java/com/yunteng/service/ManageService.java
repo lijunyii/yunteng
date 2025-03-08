@@ -29,6 +29,21 @@ public interface ManageService {
      */
 void add(Manage manage);
 
+
+    void save(Manage manage);
+
+    Manage getById(Integer id);
+
+    Manage login(Manage manage);
+
+    /**
+     * 管理员登录
+     *
+     * @param username 用户名
+     * @param password 密码
+     * @return 登录成功返回对应的Manage对象，失败返回null
+     */
+
     Manage login(String username, String password);
 
 }
