@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @Slf4j
 @RestController
 public class ManageLoginController {
     @Autowired
     private ManageService manageService;
 
-    @PostMapping("/login")
+    // 修改映射路径为 /manage/login
+    @PostMapping("/manage/login")
     public Result login(@RequestBody Manage manage) {
         // 参数校验
         if (manage == null || manage.getUsername() == null || manage.getPassword() == null) {
