@@ -17,6 +17,7 @@ public interface EmpMapper {
      * @param username 用户名
      * @return 员工信息
      */
+    @Select("select * from emp where username = #{username}")
     Emp findByUsername(@Param("username") String username);
 
     /**
