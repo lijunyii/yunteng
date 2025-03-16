@@ -4,6 +4,7 @@ import com.yunteng.pojo.Result;
 import com.yunteng.utils.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.util.InstanceFilter;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -25,10 +26,16 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
             return true;
         }
         //3.获取请求头中的令牌
-        String jwt = request.getParameter("token");
+        //String jwt = request.getHeader("authToken");
+        // System.out.println(authToken);
+        String jwt = request.getParameter("authToken");
+        if (jwt == null) {
+            jwt = request.getHeader("authToken");
+        }
+        System.out.println(jwt);
         //4.判断令牌是否存在，如果不存在，登录失败
         if(!StringUtils.hasLength(jwt)){
-            log.info("请求头token为空，返回未登录的信息");
+            log.info("请求头token为空，返回未登录的信息 2");
             Result error = Result.error("NOT_LOGIN");
             //手动转换 对象--json
 //            String notLogin = JSONObject.toJSONString(error);

@@ -42,12 +42,12 @@ public class LoginCheckFilter implements Filter {
         }
 
         //3.获取请求头中的令牌
-        String jwt = request.getHeader("token");
+        String jwt = request.getHeader("authToken");
 
 
         //4.判断令牌是否存在，如果不存在，登录失败
         if(!StringUtils.hasLength(jwt)){
-            log.info("请求头token为空，返回未登录的信息");
+            log.info("请求头token为空，返回未登录的信息  1");
             // 使用jjwt-jackson相关方式构建响应
             response.setContentType("application/json;charset=utf-8");
             Claims claims = Jwts.claims();

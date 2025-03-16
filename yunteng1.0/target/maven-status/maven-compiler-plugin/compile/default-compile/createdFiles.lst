@@ -3,6 +3,7 @@ com\yunteng\service\ManageService.class
 com\yunteng\filter\LoginCheckFilter.class
 com\yunteng\mapper\AnnouncementMapper.class
 com\yunteng\controller\GlobalExceptionHandler.class
+com\yunteng\config\WebConfig$1.class
 com\yunteng\service\AnnouncementService.class
 com\yunteng\service\impl\AnnouncementServiceImpl.class
 com\yunteng\controller\EmpLoginController.class
